@@ -8,12 +8,12 @@ if (process.env.NODE_ENV !== 'production')
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Thanwar Blogposts`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Thanwar`,
+      summary: `CS student learning SaaS development .`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `A starter blog with Gatsby And Contentful.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {
       twitter: `kylemathews`,
@@ -81,6 +81,11 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+
+    `@contentful/gatsby-transformer-contentful-richtext`,
+
+    
+
 
     {
       resolve: `gatsby-source-contentful`,

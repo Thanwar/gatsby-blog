@@ -1,6 +1,8 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import Img from "gatsby-image"
+
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -24,8 +26,10 @@ const BlogPostContentfulTemplate = ({ data, location }) => {
         <header>
           <h1 itemProp="headline">{post.title}</h1>
         </header>
+        <Img fluid={post.image.fluid} />
+        <br />
         <section
-          dangerouslySetInnerHTML={{ __html: post.content.raw }}
+          dangerouslySetInnerHTML={{ __html: post.body.body }}
           itemProp="articleBody"
         />
         <hr />
@@ -70,33 +74,19 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        author
       }
     }
     contentfulPost(slug: { eq: $slug }) {
       title
       subtitle
-      author
-      content{
-        # rich text
-        raw
+      image {
+        fluid {
+            ...GatsbyContentfulFluid
+          }
       }
-    }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
+      body {
+          body
+        }
     }
   }
 `
